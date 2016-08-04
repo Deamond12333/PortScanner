@@ -39,6 +39,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.progress_bar = new System.Windows.Forms.ProgressBar();
+            this.isScanAllPorts = new System.Windows.Forms.CheckBox();
+            this.isJustOpenPorts = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.portsTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.portsFrom)).BeginInit();
             this.SuspendLayout();
@@ -46,9 +48,9 @@
             // scan_button
             // 
             this.scan_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.scan_button.Location = new System.Drawing.Point(185, 66);
+            this.scan_button.Location = new System.Drawing.Point(185, 125);
             this.scan_button.Name = "scan_button";
-            this.scan_button.Size = new System.Drawing.Size(128, 23);
+            this.scan_button.Size = new System.Drawing.Size(147, 23);
             this.scan_button.TabIndex = 2;
             this.scan_button.Text = "СКАНИРОВАТЬ!";
             this.scan_button.UseVisualStyleBackColor = true;
@@ -106,7 +108,7 @@
             0,
             0});
             this.portsTo.Name = "portsTo";
-            this.portsTo.Size = new System.Drawing.Size(71, 20);
+            this.portsTo.Size = new System.Drawing.Size(90, 20);
             this.portsTo.TabIndex = 6;
             this.portsTo.Value = new decimal(new int[] {
             1,
@@ -128,7 +130,7 @@
             0,
             0});
             this.portsFrom.Name = "portsFrom";
-            this.portsFrom.Size = new System.Drawing.Size(71, 20);
+            this.portsFrom.Size = new System.Drawing.Size(90, 20);
             this.portsFrom.TabIndex = 7;
             this.portsFrom.Value = new decimal(new int[] {
             1,
@@ -158,14 +160,37 @@
             // 
             this.progress_bar.Location = new System.Drawing.Point(12, 379);
             this.progress_bar.Name = "progress_bar";
-            this.progress_bar.Size = new System.Drawing.Size(301, 23);
+            this.progress_bar.Size = new System.Drawing.Size(320, 23);
             this.progress_bar.TabIndex = 10;
+            // 
+            // isScanAllPorts
+            // 
+            this.isScanAllPorts.AutoSize = true;
+            this.isScanAllPorts.Location = new System.Drawing.Point(185, 66);
+            this.isScanAllPorts.Name = "isScanAllPorts";
+            this.isScanAllPorts.Size = new System.Drawing.Size(147, 17);
+            this.isScanAllPorts.TabIndex = 11;
+            this.isScanAllPorts.Text = "Сканировать все порты";
+            this.isScanAllPorts.UseVisualStyleBackColor = true;
+            this.isScanAllPorts.CheckedChanged += new System.EventHandler(this.isScanAllPorts_CheckedChanged);
+            // 
+            // isJustOpenPorts
+            // 
+            this.isJustOpenPorts.AutoSize = true;
+            this.isJustOpenPorts.Location = new System.Drawing.Point(185, 89);
+            this.isJustOpenPorts.Name = "isJustOpenPorts";
+            this.isJustOpenPorts.Size = new System.Drawing.Size(127, 30);
+            this.isJustOpenPorts.TabIndex = 12;
+            this.isJustOpenPorts.Text = "Показывать только\r\nоткрытые порты";
+            this.isJustOpenPorts.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 414);
+            this.ClientSize = new System.Drawing.Size(339, 414);
+            this.Controls.Add(this.isJustOpenPorts);
+            this.Controls.Add(this.isScanAllPorts);
             this.Controls.Add(this.progress_bar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -200,6 +225,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ProgressBar progress_bar;
+        private System.Windows.Forms.CheckBox isScanAllPorts;
+        private System.Windows.Forms.CheckBox isJustOpenPorts;
     }
 }
 

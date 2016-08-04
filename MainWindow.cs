@@ -27,6 +27,19 @@ namespace PortScanner
             int EndPort = Convert.ToInt32(portsFrom.Value);
             int i;
 
+            if (isScanAllPorts.Checked)
+            {
+                StartPort = 1;
+                EndPort = 9999;
+            }
+
+            if (EndPort < StartPort)
+            {
+                int buffer = StartPort;
+                StartPort = EndPort;
+                EndPort = buffer;
+            }
+
             progress_bar.Maximum = EndPort - StartPort + 1;
             progress_bar.Value = 0;
             listview_scanner.Items.Clear();
@@ -82,6 +95,12 @@ namespace PortScanner
         private void scan_button_Click(object sender, EventArgs e)
         {
             Scan();
+        }
+
+        private void isScanAllPorts_CheckedChanged(object sender, EventArgs e)
+        {
+            portsTo.Enabled = !portsTo.Enabled;
+            portsFrom.Enabled = !portsFrom.Enabled;
         }
 
     }
