@@ -20,7 +20,6 @@ namespace PortScanner
         {
             InitializeComponent();
             hostBox.Text = "127.0.0.1";
-            scanThread = new Thread(Scan);
             scan_button.Text = "Сканировать";
         }
 
@@ -62,10 +61,10 @@ namespace PortScanner
                 if (!asyncResult.AsyncWaitHandle.WaitOne(30, false))
                 {
                     MySoc.Close();
-                    if (isJustOpenPorts.Checked) continue;
                     this.Invoke(new Action(delegate
                     {
                         progress_bar.Value += 1;
+                        if (isJustOpenPorts.Checked) return;
                         listview_scanner.Items.Add("Порт " + i.ToString());
                         listview_scanner.Items[j].SubItems.Add("закрыт");
                         listview_scanner.Items[j].BackColor = Color.Bisque;
@@ -90,8 +89,8 @@ namespace PortScanner
             {
                 progress_bar.Value = 0;
                 scan_button.Text = "Сканировать";
+                isStart = false;
             }));
-            Thread.CurrentThread.Abort();
         }
 
         private static void ConnectCallback(IAsyncResult ar)
@@ -114,10 +113,12 @@ namespace PortScanner
             {
                 scan_button.Text = "Сканировать";
                 scanThread.Abort();
+                progress_bar.Value = 0;
             }
             else
             {
                 scan_button.Text = "Остановить";
+                scanThread = new Thread(Scan);
                 scanThread.Start();
             }
         }
